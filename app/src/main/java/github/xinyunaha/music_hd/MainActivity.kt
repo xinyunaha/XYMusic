@@ -2,15 +2,16 @@
 
 package github.xinyunaha.music_hd
 
-import android.app.Application
+
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.util.Log.d
 import android.util.Log.e
-import android.view.WindowInsets
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.source.ExtractorMediaSource
@@ -19,10 +20,12 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import github.xinyunaha.music_hd.api.ApiEngine.Companion.retrofitCreate
 import github.xinyunaha.music_hd.api.ApiService
 import github.xinyunaha.music_hd.bean.checkMusic.checkMusic
+import github.xinyunaha.music_hd.fragment.*
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Callback
 
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         @Suppress("DEPRECATION")
@@ -50,10 +53,43 @@ class MainActivity : AppCompatActivity() {
                 val mediaSource1 = ExtractorMediaSource.Factory(defaultDataSourceFactory)
                     .createMediaSource(Uri.parse(url))
                 concatenatingMediaSource.addMediaSource(mediaSource1)
+                d("播放列表数量","${concatenatingMediaSource.size}")
+//                d("播放列表数量","${concatenatingMediaSource.removeMediaSource()}")
                 player.playWhenReady = true
                 player.prepare(concatenatingMediaSource)
             }
         })
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.fragment, FindFragment())
+        fragmentTransaction.commit()
+
+        find_btn.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment, FindFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        mine_btn.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment, MineFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        search_btn.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment, SearchFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        user_btn.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment, UserFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+
 
     }
+
 }
