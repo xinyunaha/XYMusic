@@ -12,13 +12,16 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+const val BaseUrl = "https://home.bokro.cn:1443/wyyyy/"
+
 interface ApiService {
+
     /*
      * 登录
      * @query phone 手机号
      * @query md5_password 密码
      * */
-    @GET("/login/cellphone")
+    @GET("login/cellphone")
     fun loginPhone(@Query("phone") username: String,
                    @Query("md5_password") md5_password: String):Call<login>
 
@@ -36,14 +39,14 @@ interface ApiService {
      * @query keywords 关键词
      * @query type 类型 // mobile=移动端数据
      * */
-    @GET("/search/suggest")
+    @GET("search/suggest")
     fun searchSuggest(@Query("keywords") keywords: String):Call<searchSuggest>
 
     /*
          * 歌曲可用性
          * @query id 歌曲ID
          * */
-    @GET("/check/music")
+    @GET("check/music")
     fun checkMusic(@Query("id") id: String):Call<checkMusic>
 
 

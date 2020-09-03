@@ -25,7 +25,7 @@ class ApiEngine {
 
          fun retrofitCreate(context: Context): Retrofit {
             return Retrofit.Builder().apply {
-                baseUrl("http://192.168.0.107:55555/")
+                baseUrl(BaseUrl)
                 addConverterFactory(GsonConverterFactory.create())
                 client(okHttpClient(context))
 //                this
