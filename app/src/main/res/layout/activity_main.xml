@@ -1,91 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="150px"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/find_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="发现" />
-
-        <Button
-            android:id="@+id/mine_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="我的" />
-
-        <Button
-            android:id="@+id/user_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="账号" />
-
-        <Button
-            android:id="@+id/search_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="搜索" />
-    </LinearLayout>
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:animationCache="false"
+            android:background="#f3f3f3"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/userPic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/nickName_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="未登录未登录未登录" />
+
+            <ImageView
+                android:id="@+id/find_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/ic_baseline_cloud_24"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/mine_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/ic_baseline_cloud_24"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/search_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/ic_baseline_cloud_24"
+                tools:ignore="VectorDrawableCompat" />
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1">
 
         </FrameLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#bc494d"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/songPic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="上一首" />
-
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="暂停" />
-
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/MusicName_text"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="下一首" />
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="歌曲名称歌曲名称歌曲名称歌曲名称"
+                android:textColor="#E0E0E0" />
 
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/MusicSinger_text"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:text="播放页面" />
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="歌手"
+                android:textColor="#E0E0E0" />
+        </LinearLayout>
 
-            <SeekBar
-                android:id="@+id/seekBar"
+        <ImageView
+            android:id="@+id/previous_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@drawable/exo_controls_previous" />
+
+        <ImageView
+            android:id="@+id/stop_play_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@drawable/exo_controls_pause" />
+
+        <ImageView
+            android:id="@+id/next_btn"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:srcCompat="@drawable/exo_controls_next"
+            android:focusable="true" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="5"
+            android:progressTint="#e5e5e5"
+            android:thumbTint="#e5e5e5"
+            tools:targetApi="lollipop" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lrc1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="歌词显示"
+                android:textColor="#E0E0E0" />
+
+            <TextView
+                android:id="@+id/lrc2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="还没完工呢"
+                android:textColor="#E0E0E0" />
         </LinearLayout>
 
     </LinearLayout>
-
-
 </LinearLayout>
