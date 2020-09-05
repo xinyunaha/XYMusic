@@ -4,20 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import github.xinyunaha.music_hd.MainActivity
 import github.xinyunaha.music_hd.R
-import kotlinx.android.synthetic.main.fragment_find.*
+import kotlinx.android.synthetic.main.fragment_main.*
 
-class FindFragment : Fragment() {
+class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View { 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_find, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
 }
@@ -31,24 +29,6 @@ class UserFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user, container, false)
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        find_test.setOnClickListener {
-            find_test.text = "fuck"
-        }
-    }
-}
-
-class MineFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mine, container, false)
-    }
 }
 
 class SearchFragment : Fragment() {
@@ -58,7 +38,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return inflater.inflate(R.layout.fragment_find, container, false)
     }
 }
 

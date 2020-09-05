@@ -1,4 +1,4 @@
-package github.xinyunaha.music_hd.bean.login
+package github.xinyunaha.music_hd.bean.loginPhone
 
 data class Account(
     val anonimousUser: Boolean,

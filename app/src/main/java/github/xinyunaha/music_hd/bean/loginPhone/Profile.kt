@@ -1,4 +1,4 @@
-package github.xinyunaha.music_hd.bean.login
+package github.xinyunaha.music_hd.bean.loginPhone
 
 data class Profile(
     val accountStatus: Int,
@@ -11,7 +11,7 @@ data class Profile(
     val backgroundImgId: Long,
     val backgroundImgIdStr: String,
     val backgroundUrl: String,
-    val birthday: Int,
+    val birthday: Long,
     val city: Int,
     val defaultAvatar: Boolean,
     val description: String,

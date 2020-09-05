@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package github.xinyunaha.music_hd.moudles
 
 import android.content.Context
@@ -7,9 +9,6 @@ import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.source.ExtractorMediaSource
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
-import github.xinyunaha.music_hd.MainActivity
-import github.xinyunaha.music_hd.R
-import kotlinx.android.synthetic.main.activity_main.*
 
 @Suppress("DEPRECATION")
 class AudioPlayer(context: Context) {
@@ -21,6 +20,10 @@ class AudioPlayer(context: Context) {
             val mediaSource = ExtractorMediaSource.Factory(defaultDataSourceFactory)
                 .createMediaSource(Uri.parse(Url))
             concatenatingMediaSource.addMediaSource(mediaSource)
+        }
+
+        fun ready() {
+            player.prepare(concatenatingMediaSource)
         }
 
         fun stop() {

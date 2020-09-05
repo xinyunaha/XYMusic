@@ -1,6 +1,6 @@
-package github.xinyunaha.music_hd.bean.login
+package github.xinyunaha.music_hd.bean.loginPhone
 
-data class login(
+data class loginPhone(
     val account: Account,
     val bindings: List<Binding>,
     val code: Int,

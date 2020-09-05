@@ -9,21 +9,23 @@ import android.util.Log.d
 import android.util.Log.e
 import android.view.WindowManager
 import android.widget.SeekBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.*
 import github.xinyunaha.music_hd.api.ApiEngine.Companion.retrofitCreate
 import github.xinyunaha.music_hd.api.ApiService
-import github.xinyunaha.music_hd.bean.checkMusic.checkMusic
+import github.xinyunaha.music_hd.bean.loginPhone.loginPhone
 import github.xinyunaha.music_hd.fragment.*
-import github.xinyunaha.music_hd.moudles.AudioPlayer
-import github.xinyunaha.music_hd.moudles.PlayHandler
-import github.xinyunaha.music_hd.moudles.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import github.xinyunaha.music_hd.bean.loginStatus.loginStatus
+import github.xinyunaha.music_hd.moudles.*
+import kotlinx.android.synthetic.main.dialog_login.view.*
+import kotlin.concurrent.thread
 
 open class MainActivity : AppCompatActivity() {
     @SuppressLint("ShowToast")
@@ -34,18 +36,109 @@ open class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
+        // 发请求的玩意
+        val request = retrofitCreate(this).create(ApiService::class.java)
+
         nickName_text.isSelected = true
         MusicName_text.isSelected = true
         MusicSinger_text.isSelected = true
+        userPic.setImageResource(R.drawable.ic_baseline_sentiment_satisfied_alt_24)
+        songPic.setImageResource(R.drawable.ic_baseline_cancel_presentation_24)
 
-        // 开局跳转发现界面
-        supportFragmentManager.beginTransaction().replace(R.id.fragment,SettingFragment()).addToBackStack(null).commit()
+        fun loginDialog(){
+            val loginForm = layoutInflater.inflate(R.layout.dialog_login,null)
+            AlertDialog.Builder(this)
+                .setTitle("登录")
+                .setView(loginForm)
+                .setPositiveButton("登录"){_,_->
+                    thread {
+                        val phone = loginForm.dialogPhone.text.toString()
+                        val password = loginForm.dialogPassword.text.toString().md5()
+                        thread {
+                            request.loginPhone(phone, password).enqueue(object: Callback<loginPhone>{
+                                override fun onResponse(call: Call<loginPhone>, response: Response<loginPhone>) {
+                                    if(response.body()?.code == 502){
+                                        Toast.toast(this@MainActivity,"密码错误")
+                                    }else{
+                                        d("登录状态","登录成功")
+                                        Toast.toast(this@MainActivity,"登录成功")
+                                        // ui 更新(用户头像及昵称)
+                                        Thread{
+                                            val bitmap = Picture.getBitmap(response.body()?.profile?.avatarUrl)
+                                            val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
+                                            roundedBitmapDrawable.isCircular = true //设置为圆形图片
+                                            runOnUiThread {
+                                                userPic.setImageDrawable(roundedBitmapDrawable)
+                                                nickName_text.text = response.body()?.profile?.nickname
+                                            }
+                                        }.start()
+                                    }
+                                }
+                                override fun onFailure(call: Call<loginPhone>, t: Throwable) {
+                                    Toast.toast(this@MainActivity,"网络访问失败")
+                                    e("网络请求","登录失败 Error:${t}")
+                                }
+                            })
+                        }
+                    }
+                }
+                .setNegativeButton("取消"){ _, _ ->
+                    Toast.toast(this,"取消登录")
+                }
+                .create().show()
+        }
+
+        // 获取登录情况
+        request.loginStatus().enqueue(object :Callback<loginStatus>{
+            override fun onResponse(call: Call<loginStatus>, response: Response<loginStatus>) {
+                d("登录状态","${response.code()}")
+                if (response.code()==301){
+                    Toast.toast(this@MainActivity,"需要登录")
+                }else{
+                    d("登录状态","登录成功")
+                    // ui 更新(用户头像及昵称)
+                    Thread{
+                        val bitmap = Picture.getBitmap(response.body()?.profile?.avatarUrl)
+                        val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
+                        roundedBitmapDrawable.isCircular = true //设置为圆形图片
+                        runOnUiThread {
+                            userPic.setImageDrawable(roundedBitmapDrawable)
+                            nickName_text.text = response.body()?.profile?.nickname
+                        }
+                    }.start()
+                }
+            }
+            override fun onFailure(call: Call<loginStatus>, t: Throwable) {
+                Toast.toast(this@MainActivity,"网络访问失败")
+                Toast.toast(this@MainActivity,"${call}")
+                e("网络请求","查询登录状态失败 Error:${t}")
+            }
+        })
+
+        userPic.setOnClickListener {
+            loginDialog()
+        }
+
+//        Thread{
+//            userPic.setImageBitmap(Picture.getBitmap("http://p3.music.126.net/nlicAI5PP9BLwj06eaRfrQ==/109951163365971285.jpg"))
+//        }.start()
+        // 圆角图片
+//        Thread{
+//            val bitmap = Picture.getBitmap("http://p3.music.126.net/nlicAI5PP9BLwj06eaRfrQ==/109951163365971285.jpg")
+//            val roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
+//            roundedBitmapDrawable.isCircular = true //设置为圆形图片
+//            runOnUiThread {
+//                userPic.setImageDrawable(roundedBitmapDrawable)
+//            }
+//        }.start()
+
 
         val audioPlayer = AudioPlayer(this)
-        audioPlayer.addSourceList("http://m7.music.126.net/20200905130030/e205dd0d2abcb597d0c6d10b955ac6c5/ymusic/76e5/ba34/d562/2e95d6640354faee9ef0d6a384d2bc5f.mp3")
-
+        val url = "http://m8.music.126.net/20200905223005/80840538f4635633b8fadc83d882a5b1/ymusic/76e5/ba34/d562/2e95d6640354faee9ef0d6a384d2bc5f.mp3"
+        audioPlayer.addSourceList(Url = url)
+        audioPlayer.ready()
+//        audioPlayer.addSourceList(url)
         d("播放列表数量","${audioPlayer.concatenatingMediaSource.size}")
-        audioPlayer.player.playWhenReady = true
 
         // Exoplayer 进度条绑定
         val playHandlers = PlayHandler(seekBar, audioPlayer.player)
@@ -93,25 +186,34 @@ open class MainActivity : AppCompatActivity() {
             }
         })
 
-        // 发请求的玩意
-        val request = retrofitCreate(this).create(ApiService::class.java)
 
-        // 发起HTTP请求
-        request.checkMusic("33894312").enqueue(object : Callback<checkMusic>{
-            override fun onFailure(call: Call<checkMusic>, t: Throwable) {
-                e("网络访问","失败")
-                e("网络访问","$t")
-            }
-            override fun onResponse(call: Call<checkMusic>,response: Response<checkMusic>) {
-                d("网络访问","成功")
-                d("歌曲可用性","${response.body()?.success}")
-                audioPlayer.player.prepare(audioPlayer.concatenatingMediaSource)
-            }
-        })
+//        // 发起HTTP请求
+//        request.checkMusic("33894312").enqueue(object : Callback<checkMusic>{
+//            override fun onFailure(call: Call<checkMusic>, t: Throwable) {
+//                e("网络访问","失败")
+//                e("网络访问","$t")
+//            }
+//            override fun onResponse(call: Call<checkMusic>,response: Response<checkMusic>) {
+//                d("网络访问","成功")
+//                d("歌曲可用性","${response.body()?.success}")
+//                audioPlayer.player.prepare(audioPlayer.concatenatingMediaSource)
+//            }
+//        })
 
-//        find_btn.setOnClickListener {
-//            supportFragmentManager.beginTransaction().replace(R.id.fragment,FindFragment()).addToBackStack(null).commit()
-//        }
+
+        setting_img.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.fragment,SettingFragment()).addToBackStack(null).commit()
+        }
+        main_img.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.fragment,MainFragment()).addToBackStack(null).commit()
+        }
+        find_img.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.fragment,SearchFragment()).addToBackStack(null).commit()
+        }
+        user_img.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.fragment,UserFragment()).addToBackStack(null).commit()
+        }
+
 
         //停止播放监听
         stop_play_btn.setOnClickListener {

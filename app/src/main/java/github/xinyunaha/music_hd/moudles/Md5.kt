@@ -1,7 +1,10 @@
 package github.xinyunaha.music_hd.moudles
 
+import android.R
+import android.widget.EditText
 import java.math.BigInteger
 import java.security.MessageDigest
+
 
 fun String.md5(): String {
     val md = MessageDigest.getInstance("MD5")

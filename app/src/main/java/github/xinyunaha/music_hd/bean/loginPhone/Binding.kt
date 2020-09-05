@@ -1,4 +1,4 @@
-package github.xinyunaha.music_hd.bean.login
+package github.xinyunaha.music_hd.bean.loginPhone
 
 data class Binding(
     val bindingTime: Long,
