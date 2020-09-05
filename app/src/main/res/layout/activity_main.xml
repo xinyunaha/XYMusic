@@ -35,38 +35,56 @@
                 android:gravity="center"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:text="未登录未登录未登录" />
+                android:text="未登录" />
 
             <ImageView
-                android:id="@+id/find_pic"
+                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_baseline_cloud_24"
+                android:layout_marginTop="40dp"
+                app:srcCompat="@drawable/ic_baseline_cloud_queue_24"
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageView
-                android:id="@+id/mine_pic"
+                android:id="@+id/imageView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_baseline_cloud_24"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@drawable/ic_baseline_search_24"
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageView
-                android:id="@+id/search_pic"
+                android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/ic_baseline_cloud_24"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@drawable/ic_baseline_person_outline_24"
                 tools:ignore="VectorDrawableCompat" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="bottom">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    app:srcCompat="@drawable/ic_baseline_settings_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <FrameLayout
             android:id="@+id/fragment"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:ignore="NestedWeights">
 
         </FrameLayout>
 
@@ -103,7 +121,7 @@
                 android:gravity="center"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:text="歌曲名称歌曲名称歌曲名称歌曲名称"
+                android:text="歌曲名称"
                 android:textColor="#E0E0E0" />
 
             <TextView
@@ -132,7 +150,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            app:srcCompat="@drawable/exo_controls_pause" />
+            app:srcCompat="@drawable/exo_controls_play" />
 
         <ImageView
             android:id="@+id/next_btn"

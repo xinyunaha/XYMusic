@@ -1,4 +1,4 @@
-package github.xinyunaha.music_hd.util
+package github.xinyunaha.music_hd.moudles
 
 import java.math.BigInteger
 import java.security.MessageDigest

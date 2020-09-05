@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 30
@@ -27,6 +29,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    greendao {
+        //版本号，升级时可以配置
+        schemaVersion 1
+        //生成的DAO，DaoMaster和DaoSession的加密包路径。默认与表实体所在的包路径相同
+        daoPackage 'com.rikkathewrold.rikkamusic.greendao.db'
+        //生成源文件的路径。默认源文件目录是在build目录中的(build/generated/source/greendao)
+        targetGenDir 'src/main/java'
+    }
+
 }
 
 dependencies {
@@ -48,6 +59,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     // exoplayer 音视频播放
     implementation 'com.google.android.exoplayer:exoplayer:2.11.8'
+    // greendao
+    implementation 'org.greenrobot:greendao:3.3.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

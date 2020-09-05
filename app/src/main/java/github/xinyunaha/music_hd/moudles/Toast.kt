@@ -1,11 +1,11 @@
-package github.xinyunaha.music_hd.util
+package github.xinyunaha.music_hd.moudles
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.Toast
 
 
-object ToastUtil {
+object Toast {
     private var myToast: Toast? = null
 
     @SuppressLint("ShowToast")
