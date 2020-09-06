@@ -42,9 +42,11 @@ open class MainActivity : AppCompatActivity() {
         nickName_text.isSelected = true
         MusicName_text.isSelected = true
         MusicSinger_text.isSelected = true
+
         userPic.setImageResource(R.drawable.ic_baseline_sentiment_satisfied_alt_24)
         songPic.setImageResource(R.drawable.ic_baseline_cancel_presentation_24)
 
+        // 登录框
         fun loginDialog(){
             val loginForm = layoutInflater.inflate(R.layout.dialog_login,null)
             AlertDialog.Builder(this)
@@ -115,9 +117,12 @@ open class MainActivity : AppCompatActivity() {
             }
         })
 
+        // 点击头像弹登录框
         userPic.setOnClickListener {
             loginDialog()
         }
+
+
 
 //        Thread{
 //            userPic.setImageBitmap(Picture.getBitmap("http://p3.music.126.net/nlicAI5PP9BLwj06eaRfrQ==/109951163365971285.jpg"))
@@ -134,10 +139,7 @@ open class MainActivity : AppCompatActivity() {
 
 
         val audioPlayer = AudioPlayer(this)
-        val url = "http://m8.music.126.net/20200905223005/80840538f4635633b8fadc83d882a5b1/ymusic/76e5/ba34/d562/2e95d6640354faee9ef0d6a384d2bc5f.mp3"
-        audioPlayer.addSourceList(Url = url)
         audioPlayer.ready()
-//        audioPlayer.addSourceList(url)
         d("播放列表数量","${audioPlayer.concatenatingMediaSource.size}")
 
         // Exoplayer 进度条绑定
@@ -164,7 +166,6 @@ open class MainActivity : AppCompatActivity() {
                         d("播放状态", "STATE_READY")
                     }
                     Player.STATE_ENDED -> {
-                        d("播放状态", "STATE_ENDED")
                         Toast.toast(this@MainActivity,"没有更多了")
                         runOnUiThread { stop_play_btn.setImageResource(R.drawable.exo_controls_play)
                             seekBar.progress = 0
@@ -204,11 +205,11 @@ open class MainActivity : AppCompatActivity() {
         setting_img.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(R.id.fragment,SettingFragment()).addToBackStack(null).commit()
         }
+        search_img.setOnClickListener {
+            supportFragmentManager.beginTransaction().replace(R.id.fragment,SearchFragment()).addToBackStack(null).commit()
+        }
         main_img.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(R.id.fragment,MainFragment()).addToBackStack(null).commit()
-        }
-        find_img.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment,SearchFragment()).addToBackStack(null).commit()
         }
         user_img.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(R.id.fragment,UserFragment()).addToBackStack(null).commit()
