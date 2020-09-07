@@ -12,6 +12,7 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.fragment.app.Fragment
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.*
 import github.xinyunaha.music_hd.api.ApiEngine.Companion.retrofitCreate
@@ -152,6 +153,7 @@ open class MainActivity : AppCompatActivity() {
             }
         })
 
+        // 播放状态
         audioPlayer.player.addListener(object : Player.EventListener {
             override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
                 when (playbackState) {
@@ -175,6 +177,7 @@ open class MainActivity : AppCompatActivity() {
             }
         })
 
+        // 进度条更新
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
             }
@@ -203,16 +206,20 @@ open class MainActivity : AppCompatActivity() {
 
 
         setting_img.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment,SettingFragment()).addToBackStack(null).commit()
+            d("fragment","设置")
+            replaceFragment(SettingFragment(),R.id.fragment)
         }
         search_img.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment,SearchFragment()).addToBackStack(null).commit()
+            d("fragment","搜索")
+            replaceFragment(SearchFragment(),R.id.fragment)
         }
         main_img.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment,MainFragment()).addToBackStack(null).commit()
+            d("fragment","主页")
+            replaceFragment(MainFragment(),R.id.fragment)
         }
         user_img.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragment,UserFragment()).addToBackStack(null).commit()
+            d("fragment","我的")
+            replaceFragment(UserFragment(),R.id.fragment)
         }
 
 
