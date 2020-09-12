@@ -38,29 +38,69 @@
                 android:singleLine="true"
                 android:text="未登录" />
 
-            <ImageView
-                android:id="@+id/main_img"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="40dp"
-                app:srcCompat="@drawable/ic_baseline_cloud_queue_24"
-                tools:ignore="VectorDrawableCompat" />
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/main_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_baseline_cloud_queue_24"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="首页"/>
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/search_img"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30sp"
-                app:srcCompat="@drawable/ic_baseline_search_24"
-                tools:ignore="VectorDrawableCompat" />
-
-            <ImageView
-                android:id="@+id/user_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                app:srcCompat="@drawable/ic_baseline_person_outline_24"
-                tools:ignore="VectorDrawableCompat" />
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/search_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_baseline_search_24"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="搜索"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/user_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_baseline_person_outline_24"
+                    tools:ignore="VectorDrawableCompat" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="我的"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

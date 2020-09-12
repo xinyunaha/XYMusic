@@ -9,7 +9,7 @@ data class Song(
     val fee: Int,
     val ftype: Int,
     val id: Int,
-    val mark: Int,
+    val mark: Long,
     val mvid: Int,
     val name: String,
     val rUrl: Any,

@@ -40,9 +40,13 @@ open class MainActivity : AppCompatActivity() {
         // 发请求的玩意
         val request = retrofitCreate(this).create(ApiService::class.java)
 
+        // 滚动显示
         nickName_text.isSelected = true
         MusicName_text.isSelected = true
         MusicSinger_text.isSelected = true
+
+        // 开局跳转发现页
+        replaceFragment(MainFragment(),R.id.fragment)
 
         userPic.setImageResource(R.drawable.ic_baseline_sentiment_satisfied_alt_24)
         songPic.setImageResource(R.drawable.ic_baseline_cancel_presentation_24)
@@ -74,7 +78,7 @@ open class MainActivity : AppCompatActivity() {
                                                 userPic.setImageDrawable(roundedBitmapDrawable)
                                                 nickName_text.text = response.body()?.profile?.nickname
                                             }
-                                        }.start()
+                                        }.start() 
                                     }
                                 }
                                 override fun onFailure(call: Call<loginPhone>, t: Throwable) {

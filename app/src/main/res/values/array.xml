@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="playBit">
+        <item>标准</item>
+        <item>较高</item>
+        <item>极高</item>
+        <item>无损(VIP)</item>
+    </string-array>
+    <string-array name="downloadBit">
+        <item>标准</item>
+        <item>较高</item>
+        <item>极高</item>
+        <item>无损(VIP)</item>
+    </string-array>
+</resources>
