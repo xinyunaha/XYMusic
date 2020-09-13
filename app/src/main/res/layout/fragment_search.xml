@@ -45,5 +45,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:textStyle="bold"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"/>
+
     </LinearLayout>
 </LinearLayout>
