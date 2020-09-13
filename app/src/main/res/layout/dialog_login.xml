@@ -10,19 +10,23 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="手机号:" />
+            android:text="手机号:"/>
 
         <EditText
             android:id="@+id/dialogPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            tools:ignore="TextFields" />
+            tools:ignore="TextFields"/>
 
     </LinearLayout>
 
@@ -32,15 +36,19 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="密   码：" />
+            android:text="密    码：" />
 
         <EditText
             android:id="@+id/dialogPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPassword" />

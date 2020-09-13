@@ -4,6 +4,7 @@ package github.xinyunaha.music_hd
 
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log.d
 import android.util.Log.e
@@ -44,6 +45,7 @@ open class MainActivity : AppCompatActivity() {
         nickName_text.isSelected = true
         MusicName_text.isSelected = true
         MusicSinger_text.isSelected = true
+        main_text.setTextColor(Color.rgb( 231, 76, 60 ))
 
         // 开局跳转发现页
         replaceFragment(MainFragment(),R.id.fragment)
@@ -102,7 +104,8 @@ open class MainActivity : AppCompatActivity() {
                 if (response.code()==301){
                     Toast.toast(this@MainActivity,"需要登录")
                 }else{
-                    d("登录状态","登录成功")
+                    d("登录状态","登录成功,资源加载中")
+                    nickName_text.text = "加载中"
                     // ui 更新(用户头像及昵称)
                     Thread{
                         val bitmap = Picture.getBitmap(response.body()?.profile?.avatarUrl)
@@ -116,6 +119,7 @@ open class MainActivity : AppCompatActivity() {
                 }
             }
             override fun onFailure(call: Call<loginStatus>, t: Throwable) {
+                nickName_text.text = "网络异常"
                 Toast.toast(this@MainActivity,"网络访问失败")
                 Toast.toast(this@MainActivity,"${call}")
                 e("网络请求","查询登录状态失败 Error:${t}")
@@ -216,14 +220,23 @@ open class MainActivity : AppCompatActivity() {
         search_img.setOnClickListener {
             d("fragment","搜索")
             replaceFragment(SearchFragment(),R.id.fragment)
+            user_text.setTextColor(Color.rgb(148,148,148))
+            main_text.setTextColor(Color.rgb(148,148,148))
+            search_text.setTextColor(Color.rgb( 231, 76, 60 ))
         }
         main_img.setOnClickListener {
             d("fragment","主页")
             replaceFragment(MainFragment(),R.id.fragment)
+            user_text.setTextColor(Color.rgb(148,148,148))
+            main_text.setTextColor(Color.rgb( 231, 76, 60 ))
+            search_text.setTextColor(Color.rgb(148,148,148))
         }
         user_img.setOnClickListener {
             d("fragment","我的")
             replaceFragment(UserFragment(),R.id.fragment)
+            user_text.setTextColor(Color.rgb( 231, 76, 60 ))
+            main_text.setTextColor(Color.rgb(148,148,148))
+            search_text.setTextColor(Color.rgb(148,148,148))
         }
 
 

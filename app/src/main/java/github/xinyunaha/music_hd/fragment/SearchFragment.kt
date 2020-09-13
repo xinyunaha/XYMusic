@@ -14,6 +14,7 @@ import github.xinyunaha.music_hd.R
 import github.xinyunaha.music_hd.api.ApiEngine
 import github.xinyunaha.music_hd.api.ApiService
 import github.xinyunaha.music_hd.bean.search.search
+import github.xinyunaha.music_hd.moudles.Setting
 import github.xinyunaha.music_hd.moudles.Toast
 import kotlinx.android.synthetic.main.fragment_search.*
 import retrofit2.Call
@@ -21,6 +22,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SearchFragment : Fragment() {
+
+    private var songNames = ArrayList<String>()
+    private var singerName = ArrayList<String>()
+    private var albumName = ArrayList<String>()
+    private var songID = ArrayList<Int>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

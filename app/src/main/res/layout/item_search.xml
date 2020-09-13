@@ -8,34 +8,54 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxEms="0"
+        android:text="序号" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxEms="0"
+        android:text="歌曲名称" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxEms="0"
+        android:text="歌手" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxEms="0"
+        android:text="专辑" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:maxEms="0"
+        android:text="时长" />
 </LinearLayout>
