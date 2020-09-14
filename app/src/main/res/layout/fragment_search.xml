@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="5dp"
@@ -11,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="vertical">
 
         <SearchView
@@ -22,14 +23,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:iconifiedByDefault="true"
-            android:background="@drawable/bg_searchview"/>
+            android:showDividers="none"
+            android:queryBackground="@null"
+            android:submitBackground="@null"
+            android:background="@drawable/bg_searchview"
+            tools:targetApi="lollipop" >
+
+        </SearchView>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="远程" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/HotSearchList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="30sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
     </LinearLayout>
 
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="#cfd8dc"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="#cfd8dc" />
 
     <LinearLayout
         android:layout_width="match_parent"

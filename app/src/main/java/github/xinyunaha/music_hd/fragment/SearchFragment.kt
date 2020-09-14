@@ -11,10 +11,13 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import github.xinyunaha.music_hd.R
+import github.xinyunaha.music_hd.adapter.HotSearch
+import github.xinyunaha.music_hd.adapter.HotSearchAdapter
 import github.xinyunaha.music_hd.adapter.SongSearch
 import github.xinyunaha.music_hd.adapter.SongSearchAdapter
 import github.xinyunaha.music_hd.api.ApiEngine
 import github.xinyunaha.music_hd.api.ApiService
+import github.xinyunaha.music_hd.bean.hotSearch.hotSearch
 import github.xinyunaha.music_hd.bean.search.search
 import github.xinyunaha.music_hd.moudles.Toast
 import github.xinyunaha.music_hd.moudles.formatTime
@@ -24,9 +27,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SearchFragment : Fragment() {
-
-    private var songList = ArrayList<SongSearch>()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,10 +46,36 @@ class SearchFragment : Fragment() {
 
         val request = ApiEngine.retrofitCreate(activity!!.baseContext).create(ApiService::class.java)
 
+        // 热搜界面
+        request.hotSearch().enqueue(object  : Callback<hotSearch>{
+            var hotSearchList = ArrayList<HotSearch>()
+            override fun onResponse(call: Call<hotSearch>, response: Response<hotSearch>) {
+                d("热搜加载","成功")
+                for (i in response.body()!!.data.indices){
+                    val data = response.body()!!.data[i]
+                    hotSearchList.add(HotSearch(Number = i,Title = data.searchWord,Content = data.content,Score = data.score))
+                    val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+                    HotSearchList.layoutManager = layoutManager
+                    val adapter =HotSearchAdapter(hotSearchList)
+                    HotSearchList.adapter = adapter
+                }
+
+            }
+
+            override fun onFailure(call: Call<hotSearch>, t: Throwable) {
+                Toast.toast(activity,"网络访问失败")
+                Toast.toast(activity,"$call")
+                Log.e("网络请求", "查询登录状态失败 Error:${t}")
+            }
+
+        })
+
+
         // 搜索控件监听
         search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             // 提交搜索
             override fun onQueryTextSubmit(query: String?): Boolean {
+                val songList = ArrayList<SongSearch>()
                 // 请求搜索结果
                 request.search("$query").enqueue(object :Callback<search>{
                     // 网络请求失败

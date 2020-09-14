@@ -1,6 +1,7 @@
 package github.xinyunaha.music_hd.api
 
 import github.xinyunaha.music_hd.bean.checkMusic.checkMusic
+import github.xinyunaha.music_hd.bean.hotSearch.hotSearch
 import github.xinyunaha.music_hd.bean.loginOut.loginOut
 import github.xinyunaha.music_hd.bean.loginPhone.loginPhone
 import github.xinyunaha.music_hd.bean.loginStatus.loginStatus
@@ -34,6 +35,9 @@ interface ApiService {
 
     @GET("check/music")
     fun checkMusic(@Query("id") id: String):Call<checkMusic>
+
+    @GET("search/hot/detail")
+    fun hotSearch():Call<hotSearch>
 
 
 }

@@ -13,7 +13,7 @@ import github.xinyunaha.music_hd.moudles.Toast
 class SongSearch(val Number:Int, val ID: Long, val Name:String, val Singer:String, val Album:String, val Time:String)
 
 
-class SongSearchAdapter(val songList: List<SongSearch>) : RecyclerView.Adapter<SongSearchAdapter.ViewHolder>(){
+class SongSearchAdapter(private val songList: List<SongSearch>) : RecyclerView.Adapter<SongSearchAdapter.ViewHolder>(){
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val songNumber: TextView = view.findViewById(R.id.search_song_number)
         val songName: TextView = view.findViewById(R.id.search_song_name)
@@ -37,12 +37,10 @@ class SongSearchAdapter(val songList: List<SongSearch>) : RecyclerView.Adapter<S
         val song = songList[position]
         holder.songName.text = song.Name
         holder.songAlbum.text = song.Album
-        holder.songNumber.text = song.Number.toString()
+        holder.songNumber.text = (song.Number + 1).toString()
         holder.songSinger.text = song.Singer
         holder.songTime.text = song.Time
     }
 
     override fun getItemCount() = songList.size
-
-
 }

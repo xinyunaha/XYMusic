@@ -1,60 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:orientation="horizontal">-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/search_song_number"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:ellipsize="end"-->
+<!--        android:maxLines="1"-->
+<!--        android:maxEms="0"-->
+<!--        android:text="序号" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/search_song_name"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="1"-->
+<!--        android:ellipsize="end"-->
+<!--        android:maxLines="1"-->
+<!--        android:maxEms="0"-->
+<!--        android:text="歌曲名称" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/search_song_singer"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="1"-->
+<!--        android:ellipsize="end"-->
+<!--        android:maxLines="1"-->
+<!--        android:maxEms="0"-->
+<!--        android:text="歌手" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/search_song_album"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="1"-->
+<!--        android:ellipsize="end"-->
+<!--        android:maxLines="1"-->
+<!--        android:maxEms="0"-->
+<!--        android:text="专辑" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/search_song_time"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_weight="1"-->
+<!--        android:ellipsize="end"-->
+<!--        android:maxLines="1"-->
+<!--        android:maxEms="0"-->
+<!--        android:text="时长" />-->
+<!--</LinearLayout>
+-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:background="#019fe8"
     android:orientation="horizontal">
 
     <TextView
         android:id="@+id/search_song_number"
-        android:layout_width="40dp"
+        android:layout_width="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:maxEms="0"
-        android:text="序号" />
+        android:text="序号"
+        android:textColor="#ffffff"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_gravity="center" />
 
-    <TextView
-        android:id="@+id/search_song_name"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_weight="1"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:maxEms="0"
-        android:text="歌曲名称" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/search_song_singer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:maxEms="0"
-        android:text="歌手" />
+        <TextView
+            android:id="@+id/search_song_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="NestedWeights"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxEms="0"
+            android:text="歌手" />
+
+        <TextView
+            android:id="@+id/search_song_singer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="NestedWeights"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxEms="0"
+            android:text="演唱" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/search_song_album"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:maxEms="0"
-        android:text="专辑" />
+        android:gravity="center|left"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/search_song_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100px"
+        android:layout_height="match_parent"
+        android:textColor="#ffffff"
         android:gravity="center"
-        android:layout_weight="1"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:maxEms="0"
-        android:text="时长" />
+        android:text="TextView" />
+
 </LinearLayout>
