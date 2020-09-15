@@ -138,12 +138,19 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:background="#ECEAEA" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="30sp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"/>
 
