@@ -12,10 +12,10 @@ class HotSearch (val Number:Int, val Title: String, val Content:String, val Scor
 
 class HotSearchAdapter(private val hotList: List<HotSearch>) : RecyclerView.Adapter<HotSearchAdapter.ViewHolder>(){
     inner class ViewHolder(view: View) :RecyclerView.ViewHolder(view){
-        val hotNumber:TextView = view.findViewById(R.id.search_hot_number)
+//        val hotNumber:TextView = view.findViewById(R.id.search_hot_number)
         val hotTitle:TextView = view.findViewById(R.id.search_hot_title)
-        val hotContent:TextView = view.findViewById(R.id.search_hot_content)
-        val hotSore:TextView = view.findViewById(R.id.search_hot_score)
+//        val hotContent:TextView = view.findViewById(R.id.search_hot_content)
+//        val hotSore:TextView = view.findViewById(R.id.search_hot_score)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,9 +32,9 @@ class HotSearchAdapter(private val hotList: List<HotSearch>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val hot = hotList[position]
         holder.hotTitle.text = hot.Title
-        holder.hotNumber.text = (hot.Number + 1).toString()
-        holder.hotContent.text = hot.Content
-        holder.hotSore.text = hot.Score.toString()
+//        holder.hotNumber.text = (hot.Number + 1).toString()
+//        holder.hotContent.text = hot.Content
+//        holder.hotSore.text = hot.Score.toString()
     }
 
     override fun getItemCount() = hotList.size

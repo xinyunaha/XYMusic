@@ -68,7 +68,7 @@
     android:layout_marginRight="10dp"
     android:layout_marginTop="2dp"
     android:layout_marginBottom="2dp"
-    android:background="#019fe8"
+    android:background="#78909c"
     android:orientation="horizontal">
 
     <TextView
