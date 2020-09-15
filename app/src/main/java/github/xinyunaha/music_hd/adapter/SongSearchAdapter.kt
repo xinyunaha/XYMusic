@@ -20,6 +20,7 @@ class SongSearchAdapter(private val songList: List<SongSearch>) : RecyclerView.A
         val songSinger:TextView = view.findViewById(R.id.search_song_singer)
         val songAlbum: TextView = view.findViewById(R.id.search_song_album)
         val songTime: TextView = view.findViewById(R.id.search_song_time)
+        val songMore: ImageView = view.findViewById(R.id.search_song_more)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,7 +29,10 @@ class SongSearchAdapter(private val songList: List<SongSearch>) : RecyclerView.A
         viewHolder.itemView.setOnClickListener {
             val position = viewHolder.adapterPosition
             val song = songList[position]
-            Toast.toast(parent.context,"歌曲ID ${song.ID}")
+            Toast.toast(parent.context,"歌曲ID ${song.ID} 专辑${song.Album}")
+        }
+        viewHolder.songMore.setOnClickListener {
+            Toast.toast(parent.context,"开发中")
         }
         return viewHolder
     }
@@ -36,7 +40,11 @@ class SongSearchAdapter(private val songList: List<SongSearch>) : RecyclerView.A
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val song = songList[position]
         holder.songName.text = song.Name
-        holder.songAlbum.text = song.Album
+        if(song.Album == ""){
+            holder.songAlbum.text = "未知专辑"
+        }else{
+            holder.songAlbum.text = song.Album
+        }
         holder.songNumber.text = (song.Number + 1).toString()
         holder.songSinger.text = song.Singer
         holder.songTime.text = song.Time
