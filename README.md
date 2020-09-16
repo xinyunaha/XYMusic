@@ -18,4 +18,3 @@
 - 音视频播放: [ExoPlayer](https://github.com/google/ExoPlayer)
 - 网络访问: [Retrofit2](https://github.com/square/retrofit)+[Okhttp](https://github.com/square/okhttp)
 - 数据解析: [Gson](https://github.com/google/gson)
-- Cookie持久化: [PersistentCookieJar](https://github.com/franmontiel/PersistentCookieJar) // 目前暂未使用
