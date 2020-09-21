@@ -12,7 +12,7 @@
 - [ ] MV播放
 - [ ] 播放本地歌曲
 
-## 使用的技术
+## 用到的开源项目 | 技术
 - 开发语言: [Kotlin](https://github.com/google/kotlin)
 - API来源: [NeteaseCloudMusic](https://github.com/Binaryify/NeteaseCloudMusicApi)
 - 音视频播放: [ExoPlayer](https://github.com/google/ExoPlayer)
